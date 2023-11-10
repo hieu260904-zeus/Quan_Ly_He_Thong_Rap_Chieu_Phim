@@ -32,7 +32,7 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
             dsPhim.Add(new Phim("BoPhim004", "Mat biec", "Lang mang", "Do Duc Thinh", "Tran Nu Yen Khe", 2.00));
             dsPhim.Add(new Phim("BoPhim005", "Co be ban diem", "Hai huoc", "Dinh Tuan Vu", "Sam", 1.35));
             dsPhim.Add(new Phim("BoPhim006", "Gac ma", "Kinh di", "Derek Nguyen", "Ngo Thanh Van", 1.40));
-            dsPhim.Add(new Phim("BoPhim007", "Dinh thự Oan khuat", "Gia dinh", "Phan Gia Nhat Linh", "Ngoc Lan", 1.55));
+            dsPhim.Add(new Phim("BoPhim007", "Dinh thu Oan khuat", "Gia dinh", "Phan Gia Nhat Linh", "Ngoc Lan", 1.55));
             dsPhim.Add(new Phim("BoPhim008", "Thang tien hon nhan", "Tinh cam", "Ngo Quang Hai", "Quynh Nga", 1.25));
             dsPhim.Add(new Phim("BoPhim009", "Chay an", "Hanh dong", "Le Hoang", "Thai Hoa", 1.48));
             dsPhim.Add(new Phim("BoPhim010", "Conan - Chiec tau sat mau den", "Phieu Lieu - Hinh su", "Kodama Kenji", "Conan", 2.32));
@@ -102,6 +102,7 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
         }
         public static void taoDanhSachRap()
         {
+            
             dsRap.Add(new Rap("Rap001", "Rap CGV Quan 9", "Quan 9 - TP.HCM", 4, 500, dsNhanVien[0]));
             dsRap.Add(new Rap("Rap002", "Rap Galaxy Tan Binh", "Tan Binh - TP.HCM", 5, 600, dsNhanVien[1]));
             dsRap.Add(new Rap("Rap003", "Rap Lotte Mart Go Vap", "Go Vap - TP.HCM", 3, 450, dsNhanVien[2]));
@@ -109,18 +110,18 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
         }
         public static void taoDSNhanVien()
         {
-            dsNhanVien.Add(new NhanVien("NV001", "Le Binh Tan", new DateTime(2000, 01, 20), "TP.HCM", "0878884223", dsRap[0]));
-            dsNhanVien.Add(new NhanVien("NV002", "Nguyen Thi Hoa", new DateTime(1995, 05, 15), "Ha Noi", "0901234567", dsRap[1]));
-            dsNhanVien.Add(new NhanVien("NV003", "Tran Van Quyen", new DateTime(1988, 10, 08), "TP.HCM", "0987654321", dsRap[2]));
-            dsNhanVien.Add(new NhanVien("NV004", "Pham Thu Ha", new DateTime(1992, 03, 25), "Binh Dinh", "0912345678", dsRap[3]));
-            dsNhanVien.Add(new NhanVien("NV005", "Vo Ngoc Lan", new DateTime(1997, 08, 12), "Hue", "0888777666", dsRap[0]));
-            dsNhanVien.Add(new NhanVien("NV006", "Truong Minh Duc", new DateTime(1990, 11, 30), "TP.HCM", "0909876543", dsRap[1]));
-            dsNhanVien.Add(new NhanVien("NV007", "Le Thi Anh Thu", new DateTime(1993, 04, 18), "Tien Giang", "0932109876", dsRap[2]));
-            dsNhanVien.Add(new NhanVien("NV008", "Hoang Van Hiep", new DateTime(1985, 07, 22), "Binh Ding", "0976543210", dsRap[3]));
-            dsNhanVien.Add(new NhanVien("NV009", "Nguyen Van Quang", new DateTime(1987, 12, 03), "Vung Tau", "0945678901", dsRap[0]));
-            dsNhanVien.Add(new NhanVien("NV010", "Tran Thi My Linh", new DateTime(1994, 06, 05), "Ha Noi", "0898765432", dsRap[1]));
-            dsNhanVien.Add(new NhanVien("NV011", "Tran Van An", new DateTime(1996, 09, 08), "TP.HCM", "0918765432", dsRap[2]));
-            dsNhanVien.Add(new NhanVien("NV012", "Nguyen Thi Mai", new DateTime(1991, 02, 14), "Da Nang", "0965432109", dsRap[3]));
+            dsNhanVien.Add(new NhanVien("NV001", "Le Binh Tan", new DateTime(2000, 01, 20), "TP.HCM", "0878884223"));
+            dsNhanVien.Add(new NhanVien("NV002", "Nguyen Thi Hoa", new DateTime(1995, 05, 15), "Ha Noi", "0901234567"));
+            dsNhanVien.Add(new NhanVien("NV003", "Tran Van Quyen", new DateTime(1988, 10, 08), "TP.HCM", "0987654321"));
+            dsNhanVien.Add(new NhanVien("NV004", "Pham Thu Ha", new DateTime(1992, 03, 25), "Binh Dinh", "0912345678"));
+            dsNhanVien.Add(new NhanVien("NV005", "Vo Ngoc Lan", new DateTime(1997, 08, 12), "Hue", "0888777666"));
+            dsNhanVien.Add(new NhanVien("NV006", "Truong Minh Duc", new DateTime(1990, 11, 30), "TP.HCM", "0909876543"));
+            dsNhanVien.Add(new NhanVien("NV007", "Le Thi Anh Thu", new DateTime(1993, 04, 18), "Tien Giang", "0932109876"));
+            dsNhanVien.Add(new NhanVien("NV008", "Hoang Van Hiep", new DateTime(1985, 07, 22), "Binh Ding", "0976543210"));
+            dsNhanVien.Add(new NhanVien("NV009", "Nguyen Van Quang", new DateTime(1987, 12, 03), "Vung Tau", "0945678901"));
+            dsNhanVien.Add(new NhanVien("NV010", "Tran Thi My Linh", new DateTime(1994, 06, 05), "Ha Noi", "0898765432"));
+            dsNhanVien.Add(new NhanVien("NV011", "Tran Van An", new DateTime(1996, 09, 08), "TP.HCM", "0918765432"));
+            dsNhanVien.Add(new NhanVien("NV012", "Nguyen Thi Mai", new DateTime(1991, 02, 14), "Da Nang", "0965432109"));
         }
         public static void taoDSViTriCV()
         {
@@ -208,8 +209,8 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
             taoDanhSachTepKH();
             taoDanhSachKG();
             taoDanhSachHoaDon();
-            taoDanhSachRap();
             taoDSNhanVien();
+            taoDanhSachRap();
             taoDSViTriCV();
             taoDSDoiTac();
             taoDSHopDong();
@@ -217,7 +218,11 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
             taoDSKhaNang();
             taoDSChiTietHD();
             // Trả lời các câu hỏi truy vấn
-
+            foreach(var item in dsPhim)
+            {
+                Console.WriteLine($"Ma phim: {item.maphim}, Ten phim: {item.tenphim}, The loai: {item.theloai}, Ten dao dien: {item.tendaodien}, Ten dien vien: {item.tendienvien}, Thoi luong phim: {item.thoiluongphim}h");
+            }
+            Console.WriteLine("Hoan thanh chuong trinh !");
             Console.ReadKey();
         }
     }
