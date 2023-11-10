@@ -14,6 +14,7 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
         {
             this.manhanvien = manhanvien;
             this.luong=luong;
+            
         }
     }
 }

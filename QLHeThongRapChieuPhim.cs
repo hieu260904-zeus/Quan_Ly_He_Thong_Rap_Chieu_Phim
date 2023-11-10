@@ -218,53 +218,132 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
             dsChiTietNguoiXem.Add(new ChiTietNguoiXem(dsPhim[5], dsKhanGia[3], true));
             dsChiTietNguoiXem.Add(new ChiTietNguoiXem(dsPhim[11], dsKhanGia[5], false));
         }
-        //Cho biết những hợp đồng có trị giá lớn hơn 200000 USD
-        public void Cau1()
+        //Cho biết mã hợp đồng, tên hợp đồng có trị giá lớn hơn 200000 USD
+        public static void Cau1()
         {
+            var query1 = from n in dsHopDong
+                         where (n.trigiaHD > 200000)
+                         select new {n.maHD,n.tenHD};
+
+            Console.WriteLine("Ket qua truy van cau 1:");
+            foreach(var hd in query1)
+            {
+                Console.WriteLine($"Ma hop dong: {hd.maHD}, Ten hop dong: {hd.tenHD}");
+            }
 
         }
-        // Cho biết thông tin những bộ phim khi biết được mã khán giả. Nếu ds bộ phim rỗng -> Khán giả chưa xem phim nào.
-        public void Cau2()
+        // Cho biết tên phim, số lượng ghế, loại phòng liên quan đến lịch chiếu của bộ phim khi biết được tên phim đó. Nếu ds bộ phim rỗng -> Khán giả chưa xem phim nào.
+        public static void Cau2(string tenPhim)
         {
+            Console.WriteLine("Ket qua truy van cau 2:");
+            var layMaPhim = from n in dsPhim
+                            where (n.tenphim == tenPhim)
+                            select new { n.maphim };
 
+            string ans = null;
+            foreach(var item in layMaPhim)
+            {
+                if (item != null)
+                {
+                    ans = item.maphim;
+                    break;
+                }
+            }
+            if (ans == null)
+            {
+                Console.WriteLine("Khong tim thay bo phim.");
+            }
+            else
+            {
+                var query2 = from n in dsLichChieu
+                             where (n.bophim.maphim == ans)
+                             select new { n.bophim.tenphim, n.phong.soluongghe, n.phong.loaiphong, n.thoigianchieu };
+                foreach (var lc in query2)
+                {
+                    string loai = (bool)lc.loaiphong ? "Vip" : "Thuong";
+                    Console.WriteLine($"Ten phim: {lc.tenphim}, So luong ghe: {lc.soluongghe}, Loai phong: {loai}, Thoi gian chieu: {lc.thoigianchieu.Hour}:{lc.thoigianchieu.Minute}:{lc.thoigianchieu.Second}");
+                }
+            }
         }
         // Cho biết thông tin của những nhân viên có địa chỉ ở TP.HCM
-        public void Cau3()
+        public static void Cau3()
         {
-
+            Console.WriteLine("Ket qua truy van cau 3:");
+            var query3 = from n in dsNhanVien
+                         where (n.diachi == "TP.HCM")
+                         select n;
+            foreach (var nv in query3)
+            {
+                Console.WriteLine($"Ma nhan vien: {nv.manhanvien}, Ho ten: {nv.hoten}, Ngay sinh: {nv.ngaysinh.Value.Day}/{nv.ngaysinh.Value.Month}/{nv.ngaysinh.Value.Year}, Dia chi: {nv.diachi}, So dien thoai: {nv.sdt}");
+            }
 
         }
-        // Cho biết thông tin những nhân viên có cấp độ cao nhất
-        public void Cau4()
+        // Cho biết những công việc của những nhân viên có cấp độ cao nhất
+        public static void Cau4()
         {
-
+            Console.WriteLine("Ket qua truy van cau 4:");
+            var step1 = from n in dsKhaNang
+                        select new { n.capdo };
+            int capDoMax = 1;
+            foreach(var kn in step1)
+            {
+                if (kn.capdo > capDoMax)
+                    capDoMax = kn.capdo;
+            }
+            var query4 = dsKhaNang.Where(n => n.capdo == capDoMax).Select(n => new {n.congviec_kn, n.nhanvien_kn.manhanvien});
+            foreach(var nv in query4)
+            {
+                Console.WriteLine($"Cac cong viec cua nhan vien co ma: {nv.manhanvien}");
+                for(int i = 0; i < nv.congviec_kn.Count; i++)
+                {
+                    Console.WriteLine(nv.congviec_kn[i].tenCV);
+                }
+            }
         }
-        // Cho biết những hợp đồng khi biết mã đối tác
-        public void Cau5()
+        // Sắp xếp mã nhân viên, tên nhân viên nhân viên theo chiều tăng dần cấp độ, nếu cấp độ bằng nhau sắp xếp giảm dần theo lương.
+        public static void Cau5()
         {
-
+            Console.WriteLine("Ket qua truy van cau 5:");
+            var query5 = dsKhaNang.OrderBy(n => n.capdo).ThenByDescending(n => n.nhanvien_kn.luong);
+            foreach(var nv in query5)
+            {
+                Console.WriteLine($"Ma nhan vien: {nv.nhanvien_kn.manhanvien}, Ho ten nhan vien: {nv.nhanvien_kn.hoten},Cap do: {nv.capdo}, Luong: {nv.nhanvien_kn.luong}");
+            }
         }
         // Cho biết những khán giả thuộc tệp khách hàng khi biết mã tệp khách hàng
-        public void Cau6()
+        public static void Cau6()
         {
 
         }
-        // Tính số tiền lương của từng nhân viên với công thức: lương cơ bản * cấp độ
-        public void Cau7()
+        // Tính số tiền lương của tất cả nhân viên theo cấp độ với công thức.
+        public static void Cau7()
         {
+            Console.WriteLine("Ket qua truy van cau 7:");
+            var query7 = from n in dsKhaNang
+                         group n by n.capdo;
+            foreach(var group in query7)
+            {
+                double totalSalary = 0;
+                foreach (var nv in group)
+                {
+                    totalSalary += nv.nhanvien_kn.luong;
+                }
+                Console.WriteLine("Tong luong cua cac nhan vien theo cap do {0} = {1}", group.Key, totalSalary);
+            }
 
+            
         }
         // In ra những hóa đơn của khán giả đó khi biết mã tệp khách hàng khán giả thuộc vào.
-        public void Cau8()
+        public static void Cau8()
         {
 
         }
-        public void Cau9()
+        public static void Cau9()
         {
 
         }
-        // Cho biết thông tin của người quản lý rạp khi biết được mã phòng.
-        public void Cau10()
+        // Cho biết những công việc của người quản lý rạp khi biết được mã phòng.
+        public static void Cau10()
         {
 
         }
@@ -286,11 +365,22 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
             taoDSKhaNang();
             taoDSChiTietHD();
             // Trả lời các câu hỏi truy vấn
-
-            foreach(var item in dsPhim)
-            {
-                Console.WriteLine($"Ma phim: {item.maphim}");
-            }
+            //Cau 1
+            Cau1();
+            // Cau 2
+            Cau2("Conan - Chiec tau sat mau den");
+            // Cau 3
+            Cau3();
+            // Cau 4
+            Cau4();
+            // Cau 5
+            Cau5();
+            // Cau 7
+            Cau7();
+            //foreach(var item in dsPhim)
+            //{
+            //    Console.WriteLine($"Ma phim: {item.maphim}");
+            //}
             
             Console.ReadKey();
         }
