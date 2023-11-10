@@ -333,19 +333,32 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
 
             
         }
-        // In ra những hóa đơn của khán giả đó khi biết mã tệp khách hàng khán giả thuộc vào.
-        public static void Cau8()
+        // In ra những hóa đơn cho những khán giả đã mua vé, khi biết mã khán giả.
+        public static void Cau8(string maKhanGia)
         {
 
         }
+
         public static void Cau9()
         {
 
         }
-        // Cho biết những công việc của người quản lý rạp khi biết được mã phòng.
-        public static void Cau10()
+        // Cho biết thông tin của người quản lý rạp khi biết được mã phòng.
+        public static void Cau10(string maPhong)
         {
+            Console.WriteLine("Ket qua truy van cau 10:");
+            var step1 = from phong in dsPhong
+                          join rap in dsRap on phong.phong_thuoc_rap.marap equals rap.marap
+                          select new { rap.QuanLy, phong.maphong };
+            var query10 = from n in step1
+                        where (n.maphong == maPhong)
+                        select n;
 
+            foreach (var ql in query10)
+            {
+                Console.WriteLine($" Ma quan ly: {ql.QuanLy.manhanvien}, Ho ten quan ly: {ql.QuanLy.hoten}," +
+                    $"Ngay sinh: {ql.QuanLy.ngaysinh.Value.Day}/{ql.QuanLy.ngaysinh.Value.Month}/{ql.QuanLy.ngaysinh.Value.Year}, Dia Chi: {ql.QuanLy.diachi}, So dien thoai: {ql.QuanLy.sdt}");
+            }
         }
 
         static void Main(string[] args)
@@ -377,6 +390,8 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
             Cau5();
             // Cau 7
             Cau7();
+            // Cau 10
+            Cau10("Phong001");
             //foreach(var item in dsPhim)
             //{
             //    Console.WriteLine($"Ma phim: {item.maphim}");
