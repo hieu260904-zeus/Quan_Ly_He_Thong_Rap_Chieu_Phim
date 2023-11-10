@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="ChiTietHopDong.cs" />
     <Compile Include="ChiTietNguoiXem.cs" />
+    <Compile Include="ConNguoi.cs" />
     <Compile Include="DoiTac.cs" />
     <Compile Include="HoaDon.cs" />
     <Compile Include="HopDong.cs" />

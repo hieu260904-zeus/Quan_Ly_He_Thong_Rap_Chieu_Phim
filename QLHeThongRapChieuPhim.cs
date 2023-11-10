@@ -286,6 +286,11 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
             taoDSKhaNang();
             taoDSChiTietHD();
             // Trả lời các câu hỏi truy vấn
+
+            foreach(var item in dsPhim)
+            {
+                Console.WriteLine($"Ma phim: {item.maphim}");
+            }
             
             Console.ReadKey();
         }
