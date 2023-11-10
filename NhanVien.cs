@@ -13,13 +13,15 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
         public DateTime? ngaysinh { get; set; }
         public string diachi { get; set; }
         public string sdt { get; set; }
-        public NhanVien(string manhanvien, string hoten, DateTime? ngaysinh, string diachi, string sdt)
+        public double luong { get; set; }
+        public NhanVien(string manhanvien, string hoten, DateTime? ngaysinh, string diachi, string sdt, double luong)
         {
             this.manhanvien=manhanvien;
             this.hoten=hoten;
             this.ngaysinh=ngaysinh;
             this.diachi=diachi;
             this.sdt=sdt;
+            this.luong=luong;
         }
     }
 }

@@ -23,6 +23,7 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
         static List<LichChieu> dsLichChieu = new List<LichChieu>();
         static List<KhaNang> dsKhaNang = new List<KhaNang>();
         static List<ChiTietHopDong> dsChiTietHopDong = new List<ChiTietHopDong>();
+        static List<ChiTietNguoiXem> dsChiTietNguoiXem = new List<ChiTietNguoiXem>();
 
         public static void taoDanhSachBoPhim()
         {
@@ -37,54 +38,46 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
             dsPhim.Add(new Phim("BoPhim009", "Chay an", "Hanh dong", "Le Hoang", "Thai Hoa", 1.48));
             dsPhim.Add(new Phim("BoPhim010", "Conan - Chiec tau sat mau den", "Phieu Lieu - Hinh su", "Kodama Kenji", "Conan", 2.32));
             dsPhim.Add(new Phim("BoPhim011", "One Piece", "Phieu Lieu - Hinh su - Lang man", "Erochi Oda", "Luffy", 5.45));
+            dsPhim.Add(new Phim("BoPhim012", "Bo Gia", "Gia Dinh", "Tran Thanh", "Tran Thanh", 2.30));
+            dsPhim.Add(new Phim("BoPhim013", "Cua lai vo bau", "Tinh Cam", "Tran Thanh", "Tran Thanh", 2.30));
         }
-
         public static void taoDanhSachPhong()
         {
-            dsPhong.Add(new Phong("Phong001", "A301", 90, true));
-            dsPhong.Add(new Phong("Phong001", "A301", 90, true));
-            dsPhong.Add(new Phong("Phong002", "B102", 80, true));
-            dsPhong.Add(new Phong("Phong003", "C205", 100, false));
-            dsPhong.Add(new Phong("Phong004", "D401", 120, false));
-            dsPhong.Add(new Phong("Phong005", "E301", 95, true));
-            dsPhong.Add(new Phong("Phong006", "F202", 110, false));
-            dsPhong.Add(new Phong("Phong007", "G103", 75, true));
-            dsPhong.Add(new Phong("Phong008", "H304", 85, true));
-            dsPhong.Add(new Phong("Phong009", "I205", 105, false));
-            dsPhong.Add(new Phong("Phong010", "J401", 130, false));
-            dsPhong.Add(new Phong("Phong011", "K301", 100, true));
-            dsPhong.Add(new Phong("Phong012", "L202", 115, false));
-            dsPhong.Add(new Phong("Phong013", "M103", 80, true));
-            dsPhong.Add(new Phong("Phong014", "N304", 90, true));
-            dsPhong.Add(new Phong("Phong015", "O205", 110, false));
+            dsPhong.Add(new Phong("Phong001", "A301", 90, true, dsRap[0]));
+            dsPhong.Add(new Phong("Phong002", "B102", 80, true, dsRap[2]));
+            dsPhong.Add(new Phong("Phong003", "C205", 100, false, dsRap[3]));
+            dsPhong.Add(new Phong("Phong004", "D401", 120, false, dsRap[0]));
+            dsPhong.Add(new Phong("Phong005", "E301", 95, true, dsRap[1]));
+            dsPhong.Add(new Phong("Phong006", "F202", 110, false, dsRap[2]));
+            dsPhong.Add(new Phong("Phong007", "G103", 75, true, dsRap[3]));
+            dsPhong.Add(new Phong("Phong008", "H304", 85, true, dsRap[0]));
+            dsPhong.Add(new Phong("Phong009", "I205", 105, false, dsRap[1]));
+            dsPhong.Add(new Phong("Phong010", "J401", 130, false, dsRap[2]));
+            dsPhong.Add(new Phong("Phong011", "K301", 100, true, dsRap[2]));
+            dsPhong.Add(new Phong("Phong012", "L202", 115, false, dsRap[3]));
+            dsPhong.Add(new Phong("Phong013", "M103", 80, true, dsRap[0]));
+            dsPhong.Add(new Phong("Phong014", "N304", 90, true, dsRap[1]));
+            dsPhong.Add(new Phong("Phong015", "O205", 110, false, dsRap[2]));
+            dsPhong.Add(new Phong("Phong016", "A301", 90, true, dsRap[1]));
         }
-
         public static void taoDanhSachTepKH()
         {
-            dsTepKhachHang.Add(new TepKH("TepKH001", "16 - 25", "Lang man", 40));
-            dsTepKhachHang.Add(new TepKH("TepKH002", "10 - 35", "Hai huoc", 35));
+            dsTepKhachHang.Add(new TepKH("TepKH001", "16 - 35", "Lang man", 40));
+            dsTepKhachHang.Add(new TepKH("TepKH002", "10 - 60", "Hai huoc", 35));
             dsTepKhachHang.Add(new TepKH("TepKH003", "18 - 45", "Hanh dong", 30));
-            dsTepKhachHang.Add(new TepKH("TepKH004", "18 - 55", "Kinh di", 25));
-            dsTepKhachHang.Add(new TepKH("TepKH005", "18 - 65", "Phieu lieu", 20));
         }
-
         public static void taoDanhSachKG()
         {
             dsKhanGia.Add(new KhanGia("KG001", "Tran Minh Triet", new DateTime(2004, 04, 25), "TPHCM", "0877362452", dsTepKhachHang[0]));
             dsKhanGia.Add(new KhanGia("KG002", "Nguyen Thi Mai", new DateTime(1995, 08, 15), "Ha Noi", "0987654321", dsTepKhachHang[1]));
             dsKhanGia.Add(new KhanGia("KG003", "Le Van Hieu", new DateTime(1980, 03, 10), "Da Nang", "0909123456", dsTepKhachHang[2]));
-            dsKhanGia.Add(new KhanGia("KG004", "Pham Thanh Tung", new DateTime(1975, 12, 05), "Vung Tau", "0123456789", dsTepKhachHang[4]));
-            dsKhanGia.Add(new KhanGia("KG005", "Tran Thi Anh", new DateTime(1999, 06, 20), "Can Tho", "0369875412", dsTepKhachHang[0]));
-            dsKhanGia.Add(new KhanGia("KG006", "Ho Van Hung", new DateTime(1988, 09, 30), "TP.HCM", "0789456123", dsTepKhachHang[0]));
-            dsKhanGia.Add(new KhanGia("KG007", "Le Van Cuong", new DateTime(1990, 07, 12), "Hai Phong", "0654321987", dsTepKhachHang[2]));
-            dsKhanGia.Add(new KhanGia("KG008", "Do Thi Nga", new DateTime(1985, 11, 22), "TP.HCM", "0912345678", dsTepKhachHang[3]));
-            dsKhanGia.Add(new KhanGia("KG009", "Truong Van Khoi", new DateTime(2002, 05, 18), "Dak Lak", "0978563412", dsTepKhachHang[4]));
-            dsKhanGia.Add(new KhanGia("KG010", "Phan Thi Thao", new DateTime(1998, 08, 14), "Long An", "0123456789", dsTepKhachHang[0]));
-            dsKhanGia.Add(new KhanGia("KG011", "Vo Van Hien", new DateTime(1977, 02, 28), "Tien Giang", "0987654321", dsTepKhachHang[1]));
-            dsKhanGia.Add(new KhanGia("KG012", "Nguyen Van Hoang", new DateTime(1983, 06, 15), "Quang Tri", "0932109876", dsTepKhachHang[2]));
-            dsKhanGia.Add(new KhanGia("KG013", "Tran Thi Thuy", new DateTime(1996, 09, 10), "Binh Dinh", "0654789321", dsTepKhachHang[3]));
-            dsKhanGia.Add(new KhanGia("KG014", "Le Van Phat", new DateTime(1989, 12, 25), "Khanh Hoa", "0912345678", dsTepKhachHang[4]));
-            dsKhanGia.Add(new KhanGia("KG015", "Tran Van Tuan", new DateTime(2010, 05, 30), "Ha Noi", "0932108765", dsTepKhachHang[1]));
+            dsKhanGia.Add(new KhanGia("KG004", "Tran Thi Anh", new DateTime(1999, 06, 20), "Can Tho", "0369875412", dsTepKhachHang[0]));
+            dsKhanGia.Add(new KhanGia("KG005", "Ho Van Hung", new DateTime(1988, 09, 30), "TP.HCM", "0789456123", dsTepKhachHang[0]));
+            dsKhanGia.Add(new KhanGia("KG006", "Truong Van Khoi", new DateTime(2002, 05, 18), "Dak Lak", "0978563412", dsTepKhachHang[1]));
+            dsKhanGia.Add(new KhanGia("KG007", "Phan Thi Thao", new DateTime(1998, 08, 14), "Long An", "0123456789", dsTepKhachHang[0]));
+            dsKhanGia.Add(new KhanGia("KG008", "Nguyen Van Hoang", new DateTime(1983, 06, 15), "Quang Tri", "0932109876", dsTepKhachHang[2]));
+            dsKhanGia.Add(new KhanGia("KG009", "Tran Thi Thuy", new DateTime(1996, 09, 10), "Binh Dinh", "0654789321", dsTepKhachHang[1]));
+            dsKhanGia.Add(new KhanGia("KG010", "Tran Van Tuan", new DateTime(2010, 05, 30), "Ha Noi", "0932108765", dsTepKhachHang[1]));
         }
         public static void taoDanhSachHoaDon()
         {
@@ -93,12 +86,11 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
             dsHoaDon.Add(new HoaDon("HD003", new DateTime(2023, 06, 27), 200, "Conan - Chiec tau sat mau den", 1.8, "B3", dsKhanGia[2]));
             dsHoaDon.Add(new HoaDon("HD004", new DateTime(2023, 06, 28), 120, "Chiec la cuoi cung", 1.2, "C1", dsKhanGia[3]));
             dsHoaDon.Add(new HoaDon("HD005", new DateTime(2023, 06, 29), 250, "Conan - Chiec tau sat mau den", 2.0, "D5", dsKhanGia[4]));
-            dsHoaDon.Add(new HoaDon("HD006", new DateTime(2023, 06, 30), 190, "Mat biec", 1.6, "E2", dsKhanGia[5]));
+            dsHoaDon.Add(new HoaDon("HD006", new DateTime(2023, 06, 30), 190, "Mat biec", 1.6, "E2", dsKhanGia[2]));
             dsHoaDon.Add(new HoaDon("HD007", new DateTime(2023, 07, 01), 170, "Mat biec", 1.7, "F3", dsKhanGia[6]));
-            dsHoaDon.Add(new HoaDon("HD008", new DateTime(2023, 07, 02), 210, "Mat biec", 1.9, "G4", dsKhanGia[7]));
+            dsHoaDon.Add(new HoaDon("HD008", new DateTime(2023, 07, 02), 210, "Mat biec", 1.9, "G4", dsKhanGia[3]));
             dsHoaDon.Add(new HoaDon("HD009", new DateTime(2023, 07, 03), 160, "Co be ban diem", 1.4, "A2", dsKhanGia[8]));
             dsHoaDon.Add(new HoaDon("HD010", new DateTime(2023, 07, 04), 180, "Thang tien hon nhan", 1.5, "B3", dsKhanGia[9]));
-
         }
         public static void taoDanhSachRap()
         {
@@ -110,18 +102,18 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
         }
         public static void taoDSNhanVien()
         {
-            dsNhanVien.Add(new NhanVien("NV001", "Le Binh Tan", new DateTime(2000, 01, 20), "TP.HCM", "0878884223"));
-            dsNhanVien.Add(new NhanVien("NV002", "Nguyen Thi Hoa", new DateTime(1995, 05, 15), "Ha Noi", "0901234567"));
-            dsNhanVien.Add(new NhanVien("NV003", "Tran Van Quyen", new DateTime(1988, 10, 08), "TP.HCM", "0987654321"));
-            dsNhanVien.Add(new NhanVien("NV004", "Pham Thu Ha", new DateTime(1992, 03, 25), "Binh Dinh", "0912345678"));
-            dsNhanVien.Add(new NhanVien("NV005", "Vo Ngoc Lan", new DateTime(1997, 08, 12), "Hue", "0888777666"));
-            dsNhanVien.Add(new NhanVien("NV006", "Truong Minh Duc", new DateTime(1990, 11, 30), "TP.HCM", "0909876543"));
-            dsNhanVien.Add(new NhanVien("NV007", "Le Thi Anh Thu", new DateTime(1993, 04, 18), "Tien Giang", "0932109876"));
-            dsNhanVien.Add(new NhanVien("NV008", "Hoang Van Hiep", new DateTime(1985, 07, 22), "Binh Ding", "0976543210"));
-            dsNhanVien.Add(new NhanVien("NV009", "Nguyen Van Quang", new DateTime(1987, 12, 03), "Vung Tau", "0945678901"));
-            dsNhanVien.Add(new NhanVien("NV010", "Tran Thi My Linh", new DateTime(1994, 06, 05), "Ha Noi", "0898765432"));
-            dsNhanVien.Add(new NhanVien("NV011", "Tran Van An", new DateTime(1996, 09, 08), "TP.HCM", "0918765432"));
-            dsNhanVien.Add(new NhanVien("NV012", "Nguyen Thi Mai", new DateTime(1991, 02, 14), "Da Nang", "0965432109"));
+            dsNhanVien.Add(new NhanVien("NV001", "Le Binh Tan", new DateTime(2000, 01, 20), "TP.HCM", "0878884223", 2000));
+            dsNhanVien.Add(new NhanVien("NV002", "Nguyen Thi Hoa", new DateTime(1995, 05, 15), "Ha Noi", "0901234567", 1900));
+            dsNhanVien.Add(new NhanVien("NV003", "Tran Van Quyen", new DateTime(1988, 10, 08), "TP.HCM", "0987654321", 5000));
+            dsNhanVien.Add(new NhanVien("NV004", "Pham Thu Ha", new DateTime(1992, 03, 25), "Binh Dinh", "0912345678", 500));
+            dsNhanVien.Add(new NhanVien("NV005", "Vo Ngoc Lan", new DateTime(1997, 08, 12), "Hue", "0888777666",600));
+            dsNhanVien.Add(new NhanVien("NV006", "Truong Minh Duc", new DateTime(1990, 11, 30), "TP.HCM", "0909876543", 500));
+            dsNhanVien.Add(new NhanVien("NV007", "Le Thi Anh Thu", new DateTime(1993, 04, 18), "Tien Giang", "0932109876", 700));
+            dsNhanVien.Add(new NhanVien("NV008", "Hoang Van Hiep", new DateTime(1985, 07, 22), "Binh Ding", "0976543210",1000));
+            dsNhanVien.Add(new NhanVien("NV009", "Nguyen Van Quang", new DateTime(1987, 12, 03), "Vung Tau", "0945678901", 800));
+            dsNhanVien.Add(new NhanVien("NV010", "Tran Thi My Linh", new DateTime(1994, 06, 05), "Ha Noi", "0898765432", 600));
+            dsNhanVien.Add(new NhanVien("NV011", "Tran Van An", new DateTime(1996, 09, 08), "TP.HCM", "0918765432", 700));
+            dsNhanVien.Add(new NhanVien("NV012", "Nguyen Thi Mai", new DateTime(1991, 02, 14), "Da Nang", "0965432109", 650));
         }
         public static void taoDSViTriCV()
         {
@@ -160,13 +152,16 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
             dsLichChieu.Add(new LichChieu(dsPhim[1], dsPhong[0], new DateTime(2023, 07, 13, 18, 00, 00)));
             dsLichChieu.Add(new LichChieu(dsPhim[9], dsPhong[5], new DateTime(2023, 08, 02, 18, 30, 30)));
             dsLichChieu.Add(new LichChieu(dsPhim[2], dsPhong[3], new DateTime(2023, 07, 13, 20, 45, 50)));
-            dsLichChieu.Add(new LichChieu(dsPhim[4], dsPhong[6], new DateTime(2023, 07, 13,19, 30, 00)));
-            dsLichChieu.Add(new LichChieu(dsPhim[8], dsPhong[1], new DateTime(2023, 07, 13, 20, 45, 50)));
-            dsLichChieu.Add(new LichChieu(dsPhim[10], dsPhong[4], new DateTime(2023, 07, 13, 18, 00, 00)));
-            dsLichChieu.Add(new LichChieu(dsPhim[7], dsPhong[2], new DateTime(2023, 07, 13, 18, 00, 00)));
-            dsLichChieu.Add(new LichChieu(dsPhim[7], dsPhong[3], new DateTime(2023, 07, 13, 18, 00, 00)));
-            dsLichChieu.Add(new LichChieu(dsPhim[9], dsPhong[9], new DateTime(2023, 07, 13, 17, 30, 00)));
+            dsLichChieu.Add(new LichChieu(dsPhim[4], dsPhong[6], new DateTime(2023, 10, 23,19, 30, 00)));
+            dsLichChieu.Add(new LichChieu(dsPhim[8], dsPhong[1], new DateTime(2023, 05, 24, 20, 45, 50)));
+            dsLichChieu.Add(new LichChieu(dsPhim[10], dsPhong[4], new DateTime(2023, 07, 16, 18, 00, 00)));
+            dsLichChieu.Add(new LichChieu(dsPhim[7], dsPhong[2], new DateTime(2023, 09, 30, 18, 00, 00)));
+            dsLichChieu.Add(new LichChieu(dsPhim[7], dsPhong[3], new DateTime(2023, 07, 29, 18, 00, 00)));
+            dsLichChieu.Add(new LichChieu(dsPhim[9], dsPhong[9], new DateTime(2023, 07, 28, 17, 30, 00)));
             dsLichChieu.Add(new LichChieu(dsPhim[2], dsPhong[3], new DateTime(2023, 07, 13, 19, 30, 00)));
+            dsLichChieu.Add(new LichChieu(dsPhim[10], dsPhong[3], new DateTime(2023, 08, 17, 18, 00, 00)));
+            dsLichChieu.Add(new LichChieu(dsPhim[11], dsPhong[9], new DateTime(2023, 08, 13, 17, 30, 00)));
+            dsLichChieu.Add(new LichChieu(dsPhim[12], dsPhong[3], new DateTime(2023, 09, 12, 19, 30, 00)));
         }
         public static void taoDSKhaNang()
         {
@@ -201,16 +196,89 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
             dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[1], dsDoiTac[3], 620000, new DateTime(2019, 07, 15)));
             dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[2], dsDoiTac[4], 580000, new DateTime(2019, 02, 25)));
         }
+        public static void taoDSChiTietNguoiXem()
+        {
+            dsChiTietNguoiXem.Add(new ChiTietNguoiXem(dsPhim[0], dsKhanGia[1], true));
+            dsChiTietNguoiXem.Add(new ChiTietNguoiXem(dsPhim[0], dsKhanGia[3], false));
+            dsChiTietNguoiXem.Add(new ChiTietNguoiXem(dsPhim[2], dsKhanGia[5], true));
+            dsChiTietNguoiXem.Add(new ChiTietNguoiXem(dsPhim[3], dsKhanGia[7], true));
+            dsChiTietNguoiXem.Add(new ChiTietNguoiXem(dsPhim[4], dsKhanGia[9], false));
+            dsChiTietNguoiXem.Add(new ChiTietNguoiXem(dsPhim[5], dsKhanGia[4], true));
+            dsChiTietNguoiXem.Add(new ChiTietNguoiXem(dsPhim[6], dsKhanGia[4], false));
+            dsChiTietNguoiXem.Add(new ChiTietNguoiXem(dsPhim[11], dsKhanGia[1], true));
+            dsChiTietNguoiXem.Add(new ChiTietNguoiXem(dsPhim[8], dsKhanGia[1], false));
+            dsChiTietNguoiXem.Add(new ChiTietNguoiXem(dsPhim[9], dsKhanGia[3], true));
+            dsChiTietNguoiXem.Add(new ChiTietNguoiXem(dsPhim[10], dsKhanGia[5], false));
+            dsChiTietNguoiXem.Add(new ChiTietNguoiXem(dsPhim[11], dsKhanGia[7], true));
+            dsChiTietNguoiXem.Add(new ChiTietNguoiXem(dsPhim[0], dsKhanGia[9], false));
+            dsChiTietNguoiXem.Add(new ChiTietNguoiXem(dsPhim[12], dsKhanGia[9], true));
+            dsChiTietNguoiXem.Add(new ChiTietNguoiXem(dsPhim[2], dsKhanGia[8], false));
+            dsChiTietNguoiXem.Add(new ChiTietNguoiXem(dsPhim[3], dsKhanGia[7], true));
+            dsChiTietNguoiXem.Add(new ChiTietNguoiXem(dsPhim[4], dsKhanGia[1], false));
+            dsChiTietNguoiXem.Add(new ChiTietNguoiXem(dsPhim[5], dsKhanGia[3], true));
+            dsChiTietNguoiXem.Add(new ChiTietNguoiXem(dsPhim[11], dsKhanGia[5], false));
+        }
+        //Cho biết những hợp đồng có trị giá lớn hơn 200000 USD
+        public void Cau1()
+        {
+
+        }
+        // Cho biết thông tin những bộ phim khi biết được mã khán giả. Nếu ds bộ phim rỗng -> Khán giả chưa xem phim nào.
+        public void Cau2()
+        {
+
+        }
+        // Cho biết thông tin của những nhân viên có địa chỉ ở TP.HCM
+        public void Cau3()
+        {
+
+
+        }
+        // Cho biết thông tin những nhân viên có cấp độ cao nhất
+        public void Cau4()
+        {
+
+        }
+        // Cho biết những hợp đồng khi biết mã đối tác
+        public void Cau5()
+        {
+
+        }
+        // Cho biết những khán giả thuộc tệp khách hàng khi biết mã tệp khách hàng
+        public void Cau6()
+        {
+
+        }
+        // Tính số tiền lương của từng nhân viên với công thức: lương cơ bản * cấp độ
+        public void Cau7()
+        {
+
+        }
+        // In ra những hóa đơn của khán giả đó khi biết mã tệp khách hàng khán giả thuộc vào.
+        public void Cau8()
+        {
+
+        }
+        public void Cau9()
+        {
+
+        }
+        // Cho biết thông tin của người quản lý rạp khi biết được mã phòng.
+        public void Cau10()
+        {
+
+        }
+
         static void Main(string[] args)
         {
             // Gọi phương thức tạo tập thực thể
             taoDanhSachBoPhim();
+            taoDSNhanVien();
+            taoDanhSachRap();
             taoDanhSachPhong();
             taoDanhSachTepKH();
             taoDanhSachKG();
             taoDanhSachHoaDon();
-            taoDSNhanVien();
-            taoDanhSachRap();
             taoDSViTriCV();
             taoDSDoiTac();
             taoDSHopDong();
@@ -218,11 +286,7 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
             taoDSKhaNang();
             taoDSChiTietHD();
             // Trả lời các câu hỏi truy vấn
-            foreach(var item in dsPhim)
-            {
-                Console.WriteLine($"Ma phim: {item.maphim}, Ten phim: {item.tenphim}, The loai: {item.theloai}, Ten dao dien: {item.tendaodien}, Ten dien vien: {item.tendienvien}, Thoi luong phim: {item.thoiluongphim}h");
-            }
-            Console.WriteLine("Hoan thanh chuong trinh !");
+            
             Console.ReadKey();
         }
     }
