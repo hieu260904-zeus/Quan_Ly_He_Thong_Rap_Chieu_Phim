@@ -11,7 +11,7 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
         public string maphong { get; set; }
         public string khuvuc { get; set; }
         public int soluongghe { get; set; }
-        public bool? loaiphong { get; set; }
+        public bool? loaiphong { get; set; } // true = Vip, false = Thuong
         public Rap phong_thuoc_rap { get; set; }
         public Phong(string maphong, string khuvuc, int soluongghe, bool? loaiphong, Rap phong_thuoc_rap)
         {

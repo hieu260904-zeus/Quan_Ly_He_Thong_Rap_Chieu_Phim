@@ -166,35 +166,35 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
         public static void taoDSKhaNang()
         {
             dsKhaNang.Add(new KhaNang(dsNhanVien[0], new List<ViTriCV> { dsViTriCongViec[1], dsViTriCongViec[2], dsViTriCongViec[3] }, 3));
-            dsKhaNang.Add(new KhaNang(dsNhanVien[1], new List<ViTriCV> { dsViTriCongViec[4] }, 1));
-            dsKhaNang.Add(new KhaNang(dsNhanVien[2], new List<ViTriCV> { dsViTriCongViec[8], dsViTriCongViec[4] }, 2));
+            dsKhaNang.Add(new KhaNang(dsNhanVien[1], new List<ViTriCV> { dsViTriCongViec[1] }, 1));
+            dsKhaNang.Add(new KhaNang(dsNhanVien[2], new List<ViTriCV> { dsViTriCongViec[1], dsViTriCongViec[2] }, 2));
             dsKhaNang.Add(new KhaNang(dsNhanVien[3], new List<ViTriCV> { dsViTriCongViec[6], dsViTriCongViec[7] }, 2));
             dsKhaNang.Add(new KhaNang(dsNhanVien[4], new List<ViTriCV> { dsViTriCongViec[5] }, 1));
             dsKhaNang.Add(new KhaNang(dsNhanVien[5], new List<ViTriCV> { dsViTriCongViec[0] }, 1));
-            dsKhaNang.Add(new KhaNang(dsNhanVien[6], new List<ViTriCV> { dsViTriCongViec[6] }, 1));
+            dsKhaNang.Add(new KhaNang(dsNhanVien[6], new List<ViTriCV> { dsViTriCongViec[4] }, 1));
             dsKhaNang.Add(new KhaNang(dsNhanVien[7], new List<ViTriCV> { dsViTriCongViec[9] }, 1));
-            dsKhaNang.Add(new KhaNang(dsNhanVien[8], new List<ViTriCV> { dsViTriCongViec[3], dsViTriCongViec[9] }, 2));
+            dsKhaNang.Add(new KhaNang(dsNhanVien[8], new List<ViTriCV> { dsViTriCongViec[1], dsViTriCongViec[3] }, 2));
             dsKhaNang.Add(new KhaNang(dsNhanVien[9], new List<ViTriCV> { dsViTriCongViec[6], dsViTriCongViec[7], dsViTriCongViec[8] }, 3));
             dsKhaNang.Add(new KhaNang(dsNhanVien[10], new List<ViTriCV> { dsViTriCongViec[2] }, 1));
             dsKhaNang.Add(new KhaNang(dsNhanVien[11], new List<ViTriCV> { dsViTriCongViec[3] }, 1));
         }
         public static void taoDSChiTietHD()
         {
-            dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[0], dsDoiTac[0], 500000, new DateTime(2018, 06, 30)));
-            dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[1], dsDoiTac[1], 300000, new DateTime(2019, 01, 15)));
-            dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[2], dsDoiTac[2], 700000, new DateTime(2018, 08, 20)));
-            dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[3], dsDoiTac[3], 450000, new DateTime(2019, 02, 28)));
-            dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[4], dsDoiTac[4], 800000, new DateTime(2018, 09, 10)));
-            dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[5], dsDoiTac[0], 600000, new DateTime(2019, 03, 05)));
-            dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[0], dsDoiTac[1], 350000, new DateTime(2018, 10, 15)));
-            dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[1], dsDoiTac[2], 900000, new DateTime(2019, 04, 20)));
-            dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[2], dsDoiTac[3], 520000, new DateTime(2018, 11, 25)));
-            dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[3], dsDoiTac[4], 670000, new DateTime(2019, 05, 30)));
-            dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[4], dsDoiTac[0], 380000, new DateTime(2018, 12, 05)));
-            dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[5], dsDoiTac[1], 740000, new DateTime(2019, 06, 10)));
-            dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[0], dsDoiTac[2], 490000, new DateTime(2019, 01, 20)));
-            dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[1], dsDoiTac[3], 620000, new DateTime(2019, 07, 15)));
-            dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[2], dsDoiTac[4], 580000, new DateTime(2019, 02, 25)));
+            dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[0], dsDoiTac[0], dsRap[0], 500000, new DateTime(2018, 06, 30)));
+            dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[1], dsDoiTac[1], dsRap[1], 300000, new DateTime(2019, 01, 15)));
+            dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[2], dsDoiTac[2], dsRap[2], 700000, new DateTime(2018, 08, 20)));
+            dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[3], dsDoiTac[3], dsRap[3], 450000, new DateTime(2019, 02, 28)));
+            dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[4], dsDoiTac[4], dsRap[0], 800000, new DateTime(2018, 09, 10)));
+            dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[5], dsDoiTac[0], dsRap[1], 600000, new DateTime(2019, 03, 05)));
+            dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[0], dsDoiTac[1], dsRap[2], 350000, new DateTime(2018, 10, 15)));
+            dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[1], dsDoiTac[2], dsRap[3], 900000, new DateTime(2019, 04, 20)));
+            dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[2], dsDoiTac[3], dsRap[0], 520000, new DateTime(2018, 11, 25)));
+            dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[3], dsDoiTac[4], dsRap[0], 670000, new DateTime(2019, 05, 30)));
+            dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[4], dsDoiTac[0], dsRap[1], 380000, new DateTime(2018, 12, 05)));
+            dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[5], dsDoiTac[1], dsRap[2], 740000, new DateTime(2019, 06, 10)));
+            dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[0], dsDoiTac[2], dsRap[2], 490000, new DateTime(2019, 01, 20)));
+            dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[1], dsDoiTac[3], dsRap[2], 620000, new DateTime(2019, 07, 15)));
+            dsChiTietHopDong.Add(new ChiTietHopDong(dsHopDong[2], dsDoiTac[4], dsRap[3], 580000, new DateTime(2019, 02, 25)));
         }
         public static void taoDSChiTietNguoiXem()
         {
@@ -310,10 +310,17 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
                 Console.WriteLine($"Ma nhan vien: {nv.nhanvien_kn.manhanvien}, Ho ten nhan vien: {nv.nhanvien_kn.hoten},Cap do: {nv.capdo}, Luong: {nv.nhanvien_kn.luong}");
             }
         }
-        // Cho biết những khán giả thuộc tệp khách hàng khi biết mã tệp khách hàng
-        public static void Cau6()
+        // In ra những hóa đơn cho những khán giả đã mua vé, khi biết mã khán giả.
+        public static void Cau6(string maKhanGia)
         {
-
+            Console.WriteLine("Ket qua cau truy van 6:");
+            var query6 = dsHoaDon.Where(n => n.khangia_mua.makhangia == maKhanGia)
+                .Select(n => n);
+            foreach(var hd in query6)
+            {
+                Console.Write($"Hoa don cua khan gia co ma {hd.khangia_mua.makhangia} la:");
+                Console.WriteLine($"Ma hoa don: {hd.mahoadon}, Ngay hoa don: {hd.ngayHD.Value.Day}/{hd.ngayHD.Value.Month}/{hd.ngayHD.Value.Year}, Ten phim: {hd.tenphim}, Gio chieu: {hd.giochieu}h, Vi tri ghe: {hd.vitrighe}");
+            }
         }
         // Tính số tiền lương của tất cả nhân viên theo cấp độ với công thức.
         public static void Cau7()
@@ -330,18 +337,62 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
                 }
                 Console.WriteLine("Tong luong cua cac nhan vien theo cap do {0} = {1}", group.Key, totalSalary);
             }
-
             
         }
-        // In ra những hóa đơn cho những khán giả đã mua vé, khi biết mã khán giả.
-        public static void Cau8(string maKhanGia)
+        // Tại các tệp khách hàng, cho biết những bộ phim từng tệp khác hàng đó đã xem.
+        public static void Cau8()
         {
+            Console.WriteLine("Ket qua truy van cau 8:");
 
+            // Truy vấn LINQ để lấy thông tin bộ phim đã xem của từng tệp khách hàng
+            var query8 = from kg in dsChiTietNguoiXem
+                         join phim in dsPhim on kg.phim_duocxem.maphim equals phim.maphim
+                         select new { kg.khangia_xemphim.tepkhachhang.matepKH, phim };
+
+            // Gom nhóm theo mã tệp khách hàng và liệt kê bộ phim đã xem
+            var groupedResults = query8.GroupBy(item => item.matepKH);
+
+            foreach (var group in groupedResults)
+            {
+                Console.WriteLine($"Mã tệp khách hàng: {group.Key}");
+                Console.WriteLine("Bộ phim đã xem:");
+                foreach (var item in group)
+                {
+                    Console.WriteLine($"- {item.phim.tenphim}");
+                }
+                Console.WriteLine();
+            }
         }
-
+        // Cho biết quản lý rạp nào tham gia nhiều hợp đồng nhất. Từ đó lấy ra thông tin những đối tác họ đã làm việc, những hợp đồng họ đã làm việc
         public static void Cau9()
         {
+            Console.WriteLine("Ket qua truy van cau 9:");
+            // Thực hiện gom nhóm theo mã rạp
+            var largestGroup = dsChiTietHopDong.GroupBy(rap => rap.rap_chitiet.marap)
+                .Select(group => new { maRap = group.Key, Count = group.Count() })
+                .OrderByDescending(group => group.Count)
+                .FirstOrDefault();
 
+            // Kiểm tra xem có rạp nào tham gia hợp đồng không
+            if (largestGroup != null)
+            {
+                Console.WriteLine($"Ma rap co nhieu hop đong nhat: {largestGroup.maRap}, So luong hop đong: {largestGroup.Count}");
+
+                // Lấy ra thông tin đối tác và hợp đồng của rạp có nhiều hợp đồng nhất
+                var query9 = from cthd in dsChiTietHopDong
+                             join rap in dsRap on cthd.rap_chitiet.marap equals rap.marap
+                             where cthd.rap_chitiet.marap == largestGroup.maRap
+                             select new { rap.QuanLy, cthd.doitac_chitiet, cthd.hopdong_chitiet };
+
+                foreach (var item in query9)
+                {
+                    Console.WriteLine($"Ma quan ly: {item.QuanLy.manhanvien}, Ho ten quan ly: {item.QuanLy.hoten}, Ma doi tac: {item.doitac_chitiet.maDT}, Ho ten doi tac: {item.doitac_chitiet.hoten}, Ma hop dong: {item.hopdong_chitiet.maHD}, Ten hop dong: {item.hopdong_chitiet.tenHD}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Khong co du lieu.");
+            }
         }
         // Cho biết thông tin của người quản lý rạp khi biết được mã phòng.
         public static void Cau10(string maPhong)
@@ -388,8 +439,14 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
             Cau4();
             // Cau 5
             Cau5();
+            // Cau 6
+            Cau6("KG001");
             // Cau 7
             Cau7();
+            // Cau 8
+            //Cau8();
+            // Cau 9
+            Cau9();
             // Cau 10
             Cau10("Phong001");
             //foreach(var item in dsPhim)
