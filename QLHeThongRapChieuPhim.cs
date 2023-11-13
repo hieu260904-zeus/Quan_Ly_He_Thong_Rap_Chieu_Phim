@@ -218,46 +218,36 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
             dsChiTietNguoiXem.Add(new ChiTietNguoiXem(dsPhim[5], dsKhanGia[3], true));
             dsChiTietNguoiXem.Add(new ChiTietNguoiXem(dsPhim[11], dsKhanGia[5], false));
         }
-        //Cho biết mã hợp đồng, tên hợp đồng có trị giá lớn hơn 200000 USD
+        //Cau 1: Cho biết mã hợp đồng, tên hợp đồng có trị giá lớn hơn 200000 USD
         public static void Cau1()
         {
             var query1 = from n in dsHopDong
                          where (n.trigiaHD > 200000)
-                         select new {n.maHD,n.tenHD};
+                         select new {n.maHD,n.tenHD, n.trigiaHD};
 
-            Console.WriteLine("Ket qua truy van cau 1:");
+            Console.WriteLine("Ket qua truy van cau 1. Nhung hop dong co tri gia lon hon 200000USD la:");
             foreach(var hd in query1)
             {
-                Console.WriteLine($"Ma hop dong: {hd.maHD}, Ten hop dong: {hd.tenHD}");
+                Console.WriteLine($"Ma hop dong: {hd.maHD}, Ten hop dong: {hd.tenHD}, Tri gia: {hd.trigiaHD}");
             }
 
         }
-        // Cho biết tên phim, số lượng ghế, loại phòng liên quan đến lịch chiếu của bộ phim khi biết được tên phim đó. Nếu ds bộ phim rỗng -> Khán giả chưa xem phim nào.
+        // Cau 2: Cho biết tên phim, số lượng ghế, loại phòng liên quan đến lịch chiếu của bộ phim khi biết được tên phim đó. Nếu ds bộ phim rỗng -> Khán giả chưa xem phim nào.
         public static void Cau2(string tenPhim)
         {
-            Console.WriteLine("Ket qua truy van cau 2:");
-            var layMaPhim = from n in dsPhim
-                            where (n.tenphim == tenPhim)
-                            select new { n.maphim };
+            Console.WriteLine("Ket qua truy van cau 3:");
+            var query2 = from phim in dsPhim
+                         join lc in dsLichChieu on phim.maphim equals lc.bophim.maphim
+                         where (phim.tenphim == tenPhim)
+                         select new { phim.tenphim, lc.phong.soluongghe, lc.phong.loaiphong, lc.thoigianchieu };
 
-            string ans = null;
-            foreach(var item in layMaPhim)
-            {
-                if (item != null)
-                {
-                    ans = item.maphim;
-                    break;
-                }
-            }
-            if (ans == null)
+            if (!query2.Any())
             {
                 Console.WriteLine("Khong tim thay bo phim.");
             }
             else
             {
-                var query2 = from n in dsLichChieu
-                             where (n.bophim.maphim == ans)
-                             select new { n.bophim.tenphim, n.phong.soluongghe, n.phong.loaiphong, n.thoigianchieu };
+                Console.WriteLine("Thong tin nhung bo phim co ten {0}", tenPhim);
                 foreach (var lc in query2)
                 {
                     string loai = (bool)lc.loaiphong ? "Vip" : "Thuong";
@@ -265,16 +255,23 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
                 }
             }
         }
-        // Cho biết thông tin của những nhân viên có địa chỉ ở TP.HCM
+        // Cau 3: Cho biết thông tin của những nhân viên có địa chỉ ở TP.HCM
         public static void Cau3()
         {
             Console.WriteLine("Ket qua truy van cau 3:");
             var query3 = from n in dsNhanVien
                          where (n.diachi == "TP.HCM")
                          select n;
-            foreach (var nv in query3)
+            if (!query3.Any())
             {
-                Console.WriteLine($"Ma nhan vien: {nv.manhanvien}, Ho ten: {nv.hoten}, Ngay sinh: {nv.ngaysinh.Value.Day}/{nv.ngaysinh.Value.Month}/{nv.ngaysinh.Value.Year}, Dia chi: {nv.diachi}, So dien thoai: {nv.sdt}");
+                Console.WriteLine("Khong co nhan vien nao co dia chi o TP.HCM");
+            }
+            else
+            {
+                foreach (var nv in query3)
+                {
+                    Console.WriteLine($"Ma nhan vien: {nv.manhanvien}, Ho ten: {nv.hoten}, Ngay sinh: {nv.ngaysinh.Value.Day}/{nv.ngaysinh.Value.Month}/{nv.ngaysinh.Value.Year}, Dia chi: {nv.diachi}, So dien thoai: {nv.sdt}");
+                }
             }
 
         }
@@ -318,7 +315,7 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
                 .Select(n => n);
             foreach(var hd in query6)
             {
-                Console.Write($"Hoa don cua khan gia co ma {hd.khangia_mua.makhangia} la:");
+                Console.WriteLine($"Hoa don cua khan gia co ma {hd.khangia_mua.makhangia} la:");
                 Console.WriteLine($"Ma hoa don: {hd.mahoadon}, Ngay hoa don: {hd.ngayHD.Value.Day}/{hd.ngayHD.Value.Month}/{hd.ngayHD.Value.Year}, Ten phim: {hd.tenphim}, Gio chieu: {hd.giochieu}h, Vi tri ghe: {hd.vitrighe}");
             }
         }
@@ -339,29 +336,28 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
             }
             
         }
-        // Tại các tệp khách hàng, cho biết những bộ phim từng tệp khác hàng đó đã xem.
-        public static void Cau8()
+        // Với mã hóa đơn biết trước, cho biết khán giả đó thuộc vào tệp khách hàng nào
+        public static void Cau8(string maHoaDon)
         {
             Console.WriteLine("Ket qua truy van cau 8:");
-
-            // Truy vấn LINQ để lấy thông tin bộ phim đã xem của từng tệp khách hàng
-            var query8 = from kg in dsChiTietNguoiXem
-                         join phim in dsPhim on kg.phim_duocxem.maphim equals phim.maphim
-                         select new { kg.khangia_xemphim.tepkhachhang.matepKH, phim };
-
-            // Gom nhóm theo mã tệp khách hàng và liệt kê bộ phim đã xem
-            var groupedResults = query8.GroupBy(item => item.matepKH);
-
-            foreach (var group in groupedResults)
+            var query8 = from kg in dsKhanGia
+                         join hd in dsHoaDon on kg.makhangia equals hd.khangia_mua.makhangia
+                         join tkh in dsTepKhachHang on kg.tepkhachhang.matepKH equals tkh.matepKH
+                         where (hd.mahoadon == maHoaDon)
+                         select new { tkh };
+            if (!query8.Any())
             {
-                Console.WriteLine($"Mã tệp khách hàng: {group.Key}");
-                Console.WriteLine("Bộ phim đã xem:");
-                foreach (var item in group)
-                {
-                    Console.WriteLine($"- {item.phim.tenphim}");
-                }
-                Console.WriteLine();
+                Console.WriteLine("Khong co du lien cho {0}", maHoaDon);
             }
+            else
+            {
+                Console.WriteLine("Tep khach hang cho hoa don co ma {0}", maHoaDon);
+                foreach(var item in query8)
+                {
+                    Console.WriteLine($"Ma tep khach hang: {item.tkh.matepKH}, Do tuoi: {item.tkh.dotuoi}, So thich: {item.tkh.sothich}, So luong: {item.tkh.soluong}");
+                }
+            }
+            
         }
         // Cho biết quản lý rạp nào tham gia nhiều hợp đồng nhất. Từ đó lấy ra thông tin những đối tác họ đã làm việc, những hợp đồng họ đã làm việc
         public static void Cau9()
@@ -376,8 +372,8 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
             // Kiểm tra xem có rạp nào tham gia hợp đồng không
             if (largestGroup != null)
             {
-                Console.WriteLine($"Ma rap co nhieu hop đong nhat: {largestGroup.maRap}, So luong hop đong: {largestGroup.Count}");
-
+                Console.WriteLine($"Rap co nhieu hop đong nhat: {largestGroup.maRap}, So luong hop đong: {largestGroup.Count}");
+                Console.WriteLine("---------------------------------------------------------------------------");
                 // Lấy ra thông tin đối tác và hợp đồng của rạp có nhiều hợp đồng nhất
                 var query9 = from cthd in dsChiTietHopDong
                              join rap in dsRap on cthd.rap_chitiet.marap equals rap.marap
@@ -388,6 +384,7 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
                 {
                     Console.WriteLine($"Ma quan ly: {item.QuanLy.manhanvien}, Ho ten quan ly: {item.QuanLy.hoten}, Ma doi tac: {item.doitac_chitiet.maDT}, Ho ten doi tac: {item.doitac_chitiet.hoten}, Ma hop dong: {item.hopdong_chitiet.maHD}, Ten hop dong: {item.hopdong_chitiet.tenHD}");
                 }
+                Console.WriteLine("---------------------------------------------------------------------------");
             }
             else
             {
@@ -404,10 +401,10 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
             var query10 = from n in step1
                         where (n.maphong == maPhong)
                         select n;
-
+            Console.WriteLine($"Voi ma phong {maPhong} xac dinh duoc quan ly:");
             foreach (var ql in query10)
             {
-                Console.WriteLine($" Ma quan ly: {ql.QuanLy.manhanvien}, Ho ten quan ly: {ql.QuanLy.hoten}," +
+                Console.WriteLine($"Ma quan ly: {ql.QuanLy.manhanvien}, Ho ten quan ly: {ql.QuanLy.hoten}," +
                     $"Ngay sinh: {ql.QuanLy.ngaysinh.Value.Day}/{ql.QuanLy.ngaysinh.Value.Month}/{ql.QuanLy.ngaysinh.Value.Year}, Dia Chi: {ql.QuanLy.diachi}, So dien thoai: {ql.QuanLy.sdt}");
             }
         }
@@ -444,7 +441,7 @@ namespace Quan_Ly_He_Thong_Rap_Chieu_Phim
             // Cau 7
             Cau7();
             // Cau 8
-            //Cau8();
+            Cau8("HD001");
             // Cau 9
             Cau9();
             // Cau 10
